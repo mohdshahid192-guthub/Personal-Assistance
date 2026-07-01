@@ -1,7 +1,5 @@
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import {pinecone} from "../config/vector.js"
-import { context } from "langchain";
-import { title } from "node:process";
 import { ApiError } from "../utils/errorHandler.js";
 
 const embeddings = new GoogleGenerativeAIEmbeddings({

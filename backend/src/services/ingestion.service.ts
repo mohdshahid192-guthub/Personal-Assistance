@@ -4,7 +4,6 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { HydratedDocument } from "mongoose";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
-import { Document as LangchainDocument } from "langchain";
 import { ApiError } from "../utils/errorHandler.js";
 
 
