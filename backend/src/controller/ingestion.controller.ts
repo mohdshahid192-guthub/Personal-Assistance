@@ -1,6 +1,6 @@
 import { ApiError } from "../utils/errorHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { ingestDocument, ingestPDF } from "../services/ingestion.service.js";
+import { ingestDocument, ingestDocURL, ingestPDF } from "../services/ingestion.service.js";
 import { Request, Response } from "express";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import fs from "fs"
@@ -59,7 +59,30 @@ return res.status(200).json(new ApiResponse(200, doc, "Successflly ingested PDF"
 
 });
 
+interface urlDocType{
+  url: string
+  title: string
+}
+
+const docURL = asyncHandler(async (req: Request<{}, {}, urlDocType>, res: Response) => {
+       const {url, title} = req.body
+    
+       if ((!url || url.trim().length === 0) || (!title || title.trim().length === 0)) {
+        throw new ApiError("Please enter the required credentials", 400)
+       }
+
+       const doc = await ingestDocURL(url, title)
+
+       if (!doc) {
+        throw new ApiError("can not process the url please try again", 422)
+        
+       }
+
+       return res.status(200).json(new ApiResponse(200, doc, "Successfully ingested the document"))
+})
+
 export {
   addDocument,
-  addPDF
+  addPDF,
+  docURL
 }
