@@ -7,7 +7,7 @@ import { useState } from "react"
 export default function Sidebar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-slate-950/95 text-white">
+    <div className="w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-slate-950/95 text-white ">
 
 
 

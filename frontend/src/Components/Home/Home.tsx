@@ -30,10 +30,10 @@ useEffect(() => {
 
 
   return(
-    <div className="flex flex-col h-full w-full items-center justify-center bg-slate-900 text-white">
+    <div className="flex flex-col h-full w-full items-center justify-center bg-slate-900 text-white ">
 
       
-      <div className="flex-1 flex justify-center overflow-hidden w-full px-4 pt-8">
+      <div className="flex-1 flex justify-center overflow-hidden w-full px-4 pt-8  ">
         {!hasChats ? (
           <motion.div
            variants={popAtLoad}
@@ -48,13 +48,13 @@ useEffect(() => {
         ) : (
           
           <ScrollArea className="h-full w-full max-w-3xl pr-4">
-            <div className="flex flex-col space-y-8 pb-32 pt-4">
+            <div className="flex flex-col space-y-8 pb-32 pt-4 ">
               {chats.map((msg) => {
                 const isUser = msg.sender === "Shahid";
                 return (
                   <div
                     key={msg.id}
-                    className={`flex w-full ${isUser ? "justify-end" : "justify-start"}`}
+                    className={`flex  w-full ${isUser ? "justify-end" : "justify-start"}`}
                   >
                     <div className={`flex flex-col max-w-[85%] ${isUser ? "items-end" : "items-start"}`}>
                       
@@ -65,7 +65,7 @@ useEffect(() => {
                       
                     
                       <div 
-                        className={` px-5 py-3.5 text-[15px] leading-relaxed shadow-sm break-all ${
+                        className={` px-5 py-3.5 text-[15px] leading-relaxed shadow-sm break-all  ${
                           isUser 
                             ? "bg-slate-800 rounded-2xl rounded-tr-sm text-gray-100" 
                             : "bg-transparent text-gray-200 border-l-2 border-purple-500/50 pl-4"

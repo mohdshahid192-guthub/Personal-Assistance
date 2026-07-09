@@ -10,7 +10,7 @@ const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
 const dispatch = useAppDispatch()
 
   return (
-    <nav className="flex justify-between items-center h-16 px-4 text-2xl bg-slate-900 text-white">
+    <nav className="flex justify-between items-center h-16 px-4 text-2xl bg-slate-900 text-white sticky">
      
      <h1 className='text-lg font-bold '>
       Shareen AI
