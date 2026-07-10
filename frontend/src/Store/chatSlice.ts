@@ -12,13 +12,14 @@ interface Chat{
   messages: Message[]
   sessionId: string
   isChatActive: boolean
+  isAiTyping: boolean
 }
 
 const initialState: Chat = {
     messages: [],
     sessionId: crypto.randomUUID(),
-    isChatActive: true
-
+    isChatActive: true,
+    isAiTyping: false
 }
 
 export const chatSlice = createSlice({
@@ -36,9 +37,12 @@ state.isChatActive = false
       state.sessionId = crypto.randomUUID(),
       state.isChatActive = true
 
+    },
+    setIsAiTyping: (state, action: PayloadAction<boolean>) => {
+      state.isAiTyping = action.payload
     }
   }
 })
 
-export const {addMessages, endChatSession, resetChat} = chatSlice.actions
+export const {addMessages, endChatSession, resetChat, setIsAiTyping} = chatSlice.actions
 export default chatSlice.reducer

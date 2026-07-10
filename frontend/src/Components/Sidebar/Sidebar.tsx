@@ -2,12 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPenToSquare, faUpload, faMagnifyingGlass, faComments, faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { NavLink } from "react-router-dom"
 import WhiteBtn from "../Buttons/WhiteBtn"
-import { useState } from "react"
+import { useAppSelector } from "@/src/Store/hooks"
 
 export default function Sidebar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
+
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-slate-950/95 text-white ">
+    <div className="w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-black/75 text-white backdrop-blur-sm shadow-xl shadow-black">
 
 
 
