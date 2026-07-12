@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPenToSquare, faUpload, faMagnifyingGlass, faComments, faCircleUser } from "@fortawesome/free-solid-svg-icons"
+import {  faUpload, faMagnifyingGlass, faComments, faCircleUser, faHome } from "@fortawesome/free-solid-svg-icons"
 import { NavLink } from "react-router-dom"
 import WhiteBtn from "../Buttons/WhiteBtn"
 import { useAppSelector } from "@/src/Store/hooks"
@@ -36,7 +36,7 @@ export default function Sidebar() {
 
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-black/75 text-white backdrop-blur-sm shadow-xl shadow-black ">
+    <div className="relative w-full h-full flex flex-col items-center justify-between pb-8 pt-16 bg-black/75 text-white backdrop-blur-sm shadow-xl shadow-black ">
 
 
 
@@ -52,7 +52,7 @@ export default function Sidebar() {
             }`
           }
         >
-          <FontAwesomeIcon icon={faPenToSquare} className="text-2xl" />
+          <FontAwesomeIcon icon={faHome} className="text-2xl" />
         </NavLink>
         <NavLink
           to={"/search"}
@@ -94,7 +94,7 @@ export default function Sidebar() {
           }}
 
           className={
-            `w-full h-12 flex items-center justify-center border-l-4 ${ChatHistoryActive
+            `w-full h-12 flex items-center justify-center border-l-4 cursor-pointer ${ChatHistoryActive
               ? 'bg-slate-900 border-blue-600'
               : 'bg-none border-transparent hover:border-blue-600/50 hover:bg-gray-400/20'
             }`
@@ -112,7 +112,7 @@ export default function Sidebar() {
       <section className="flex flex-col items-center justify-center gap-2 pb-2">
 
 
-        {!isLoggedIn && (<WhiteBtn size="small" variant="withoutBg"><FontAwesomeIcon icon={faCircleUser} className='text-3xl' /></WhiteBtn>)}
+        {isLoggedIn && (<WhiteBtn size="small" variant="withoutBg"><FontAwesomeIcon icon={faCircleUser} className='text-3xl' /></WhiteBtn>)}
       </section>
 
       <AnimatePresence mode="popLayout">
@@ -125,7 +125,7 @@ export default function Sidebar() {
             animate="center"
             exit="hidden"
 
-            className="fixed bottom-0 left-16 top-0 sm:top-16 w-[calc(100vw-64px)] sm:left-20 sm:w-[calc(60vw-80px)] lg:w-[calc(40vw-80px)] bg-gray-950 rounded-r-4xl  z-0 overflow-x-hidden ">
+            className="fixed bottom-0 left-16 top-0 sm:top-16 w-[calc(100vw-64px)] sm:left-20 sm:w-[calc(60vw-80px)] lg:w-[calc(40vw-80px)] bg-gray-950 rounded-r-4xl overflow-x-hidden ">
 
             <ChatHistory />
           </motion.div>

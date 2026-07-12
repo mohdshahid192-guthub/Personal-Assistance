@@ -18,7 +18,7 @@ const sizeStyles = {
 const variants = {
   withBg: "border-2 bg-white text-black rounded-xl hover:bg-transparent hover:text-white",
   withoutBg: " rounded-xl border-2 border-transparent hover:border-white ",
-  onlyBorder: "border-2 rounded-xl hover:bg-black hover:text-white"
+  onlyBorder: "border-2 rounded-xl text-white hover:bg-white hover:text-black"
 
 }
   const combinedClassName = `${baseStyle} ${sizeStyles[size]} ${variants[variant]}`

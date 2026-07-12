@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars,  faCircleUser, faX} from '@fortawesome/free-solid-svg-icons'
+import { faBars, faPenToSquare, faX} from '@fortawesome/free-solid-svg-icons'
 import WhiteBtn from '../Buttons/WhiteBtn';
-import { useAppSelector } from '../../Store/hooks';
-import { motion} from 'framer-motion'
+// import { useAppSelector } from '../../Store/hooks';
+import { motion, AnimatePresence} from 'framer-motion'
 import type { Variants } from 'framer-motion';
 import { useEffect, useRef, useState  } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
@@ -32,7 +32,7 @@ const slideAtActive: Variants = {
 
 
 export default function Header() {
-const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
+// const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
 const [isActive, setIsActive] = useState(false)
  
     const sidebarRef = useRef<HTMLDivElement>(null)
@@ -68,24 +68,32 @@ const [isActive, setIsActive] = useState(false)
      </div>
     </div>
        
-      {isLoggedIn && (<button className='' ><FontAwesomeIcon icon={faCircleUser} className='text-3xl'/></button>)}
+        <WhiteBtn size='small' variant='withoutBg'> <FontAwesomeIcon icon={faPenToSquare}  className='text-2xl'/> New Chat</WhiteBtn>
 
-      {!isLoggedIn && (
+      {/* {isLoggedIn && (<button className='' ><FontAwesomeIcon icon={faCircleUser} className='text-3xl'/></button>)} */}
+
+      {/* {!isLoggedIn && (
         <div className='flex  gap-2'>
     <WhiteBtn size='small' variant='withoutBg'>Login</WhiteBtn>
           <WhiteBtn size='small' variant='withBg' >Sign Up</WhiteBtn>
         </div>
-    )}
-       
-         <motion.div
+    )} */}
+       <AnimatePresence>
+   {isActive && (
+      <motion.div
          variants={slideAtActive}
          initial="hidden"
-         animate={isActive? "center": "hidden"}
+         animate="center"
+         exit="hidden"
          
         ref={sidebarRef}
-          className=" fixed sm:hidden inset-0 w-max top-16 z-100 ">
+          className=" fixed sm:hidden inset-0 w-16  top-16 z-100 ">
         <Sidebar />
       </motion.div>
+   )}
+
+       </AnimatePresence>
+       
     </nav>
   )
 }
