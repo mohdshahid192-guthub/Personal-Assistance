@@ -10,7 +10,7 @@ export default function Upload () {
   const [file, setFile] = useState<File | null>(null)
   return(
   <div className=" w-full h-full flex items-center justify-center bg-black/50 ">
-    <div className="w-3/4 md:w-1/2  h-3/4 md:h-3/4 bg-gray-200/10 rounded-lg text-white flex flex-col justify-start items-center backdrop-blur-sm ">
+    <div className="w-[90%] md:w-3/4 lg:w-2/3 h-3/4 md:h-3/4 bg-gray-200/10 rounded-lg text-white flex flex-col justify-start items-center backdrop-blur-sm ">
          <div className="w-full h-max grid grid-cols-3 place-items-center  px-6 py-2 gap-2">
              <button className={`w-full h-10 font-bold rounded-sm cursor-pointer  ${activeMethod === "text"? "bg-gray-200/20 backdrop-blur-sm text-white ": "bg-none hover:bg-gray-100/10 hover:backdrop-blur-sm"} transition-colors duration-300`} onClick={() => setActiveMethod("text")}>TEXT</button>
              <button className={`w-full h-10 font-bold rounded-sm cursor-pointer ${activeMethod === "url"? "bg-gray-200/20 backdrop-blur-sm  text-white": "bg-none hover:bg-gray-100/10 hover:backdrop-blur-sm"} transition-colors duration-300`} onClick={() => setActiveMethod("url")}>URL</button>

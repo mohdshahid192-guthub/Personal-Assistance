@@ -1,21 +1,70 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCircleUser} from '@fortawesome/free-solid-svg-icons'
+import { faBars,  faCircleUser, faX} from '@fortawesome/free-solid-svg-icons'
 import WhiteBtn from '../Buttons/WhiteBtn';
 import { useAppSelector } from '../../Store/hooks';
+import { motion} from 'framer-motion'
+import type { Variants } from 'framer-motion';
+import { useEffect, useRef, useState  } from 'react';
+import Sidebar from '../Sidebar/Sidebar';
+
+const slideAtActive: Variants = {
+  hidden: {
+    x: "-100%", 
+    opacity: 0,
+    pointerEvents: "none",
+    transition: {
+      x: { duration: 0.4, ease: "easeInOut" },
+      opacity: { duration: 0.4 },
+      pointerEvents: { delay: 0.4 } 
+    }
+  },
+  center: {
+    x: 0,
+    opacity: 1,
+    pointerEvents: "auto",
+    transition: {
+      x: { duration: 0.4, ease: "easeInOut" },
+      opacity: { duration: 0.4 },
+      pointerEvents: { delay: 0 } 
+    }
+  }
+};
+
 
 export default function Header() {
 const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
+const [isActive, setIsActive] = useState(false)
+ 
+    const sidebarRef = useRef<HTMLDivElement>(null)
+    
+   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isActive && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        setIsActive(false)
+      }
+    }
+    window.addEventListener("click", handleClickOutside)
 
+    return () => {
+      window.removeEventListener("click", handleClickOutside)
+    }
+  
+   }, [isActive, setIsActive])
 
   return (
-    <nav className="flex justify-between items-center h-16 px-4 text-2xl bg-black/50 text-white sticky cursor-pointer">
+    <nav className="flex justify-between items-center h-16 px-4 text-2xl bg-black/50 text-white sticky cursor-pointer "  >
      
-    <div className='relative group w-48 h-full inline-block'>
-       <h1 className='absolute inset-0 text-lg font-bold max-sm:group-hover:opacity-0 flex items-center justify-start transition-opacity duration-200 sm:pointer-none:'>
+    <div className='relative  w-48 h-full inline-block'>
+       <h1 className='absolute hidden inset-0 text-lg font-bold  sm:flex items-center justify-start pointer-events-none'>
       Shareen AI
      </h1>
-     <div className='absolute flex items-center justify-start px-4 inset-0 opacity-0 max-sm:group-hover:opacity-100 transition-opacity duration-200 sm:pointer-none:'>
-      <FontAwesomeIcon icon={faBars}/>
+     <div className='absolute flex sm:hidden items-center justify-start inset-0' 
+    onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsActive((prev) => !prev);
+  }}
+     >
+      {!isActive? (<FontAwesomeIcon icon={faBars}/>): (<FontAwesomeIcon icon={faX}/>)}
      </div>
     </div>
        
@@ -27,6 +76,16 @@ const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
           <WhiteBtn size='small' variant='withBg' >Sign Up</WhiteBtn>
         </div>
     )}
+       
+         <motion.div
+         variants={slideAtActive}
+         initial="hidden"
+         animate={isActive? "center": "hidden"}
+         
+        ref={sidebarRef}
+          className=" fixed sm:hidden inset-0 w-max top-16 z-100 ">
+        <Sidebar />
+      </motion.div>
     </nav>
   )
 }

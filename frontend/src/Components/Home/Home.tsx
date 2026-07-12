@@ -5,7 +5,6 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import {  useAppSelector } from "@/src/Store/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
-
 const popAtLoad = {
   hidden: {
     y: 50,
@@ -17,6 +16,8 @@ const popAtLoad = {
     transition: { duration: 0.6 , easeInOut: "easeInOut", once: true}
   }
 }
+
+
 
 
 export default function Home(){
@@ -33,7 +34,7 @@ useEffect(() => {
 
 
   return(
-    <div className="flex flex-col h-full w-full items-center justify-center text-white bg-black/50">
+    <div className="relative flex flex-col h-full w-full items-center justify-center text-white bg-black/50">
   
       
       <div className="flex-1 flex justify-center overflow-hidden w-full px-4 pt-8  ">
@@ -112,6 +113,8 @@ useEffect(() => {
    
      
       <ChatInput hasChats={hasChats}/>
+    
     </div>
+    
   )
 }

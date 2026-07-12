@@ -8,7 +8,7 @@ interface ButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function WhiteBtn({children, size = "medium", className = '', variant = "withBg", ...props}: ButtonProp) {
 
-  const baseStyle = " font-semibold  cursor-pointer  transition-colors duration-300"
+  const baseStyle = " font-semibold  cursor-pointer  transition-colors duration-300 text-nowrap"
 const sizeStyles = {
     small: "px-3 py-2 text-sm",
     medium: "px-4 py-3 text-base",

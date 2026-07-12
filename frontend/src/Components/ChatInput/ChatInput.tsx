@@ -84,7 +84,7 @@ export default function ChatInput({hasChats = false}) {
     }
 
   return(
-   <form onSubmit={handleSubmit}  className={`w-[90%] sm:w-[70%] md:w-[60%] h-max rounded-lg border-2 border-white/50 bg-black/40 backdrop-blur-sm fixed  ${hasChats? "bottom-0 mb-12": "bottom-1/3"} transition-all duration-300 grid grid-cols-[1fr_80px]`}>
+   <form onSubmit={handleSubmit}  className={`w-[90%] sm:w-[70%] md:w-[60%] h-max rounded-lg border-2 border-white/50 bg-black/40 backdrop-blur-sm fixed  ${hasChats? "bottom-0 mb-12": "sm:bottom-1/5 bottom-0 mb-12"} transition-all duration-300 grid grid-cols-[1fr_60px] sm:grid-cols-[1fr_80px]`}>
      <div className="w-[85%] h-full rounded-lg flex items-center overflow-hidden">
      <textarea 
   id="chat-input"
@@ -92,8 +92,8 @@ export default function ChatInput({hasChats = false}) {
   value={inputValue}
   rows={1}
   
-  placeholder="Message Shareen..."
-  className="w-full resize-none max-h-48 overflow-y-auto bg-transparent px-3 py-2 text-white outline-none placeholder:text-gray-300 "
+  placeholder="Ask Anything"
+  className="w-full resize-none max-h-48 overflow-y-auto bg-transparent pl-3 py-2 text-white outline-none placeholder:text-gray-300 "
   onInput={(e) => {
     const target = e.currentTarget;
     target.style.height = 'auto';
@@ -108,8 +108,8 @@ export default function ChatInput({hasChats = false}) {
  <div className="h-full w-full flex items-end justify-center p-2">
                <button
               
-               type="submit" className="flex h-10 w-10 rounded-full items-center bg-blue-600  justify-center text-center hover:bg-blue-700 cursor-pointer">
-      {aiChat.isPending? (<FontAwesomeIcon icon={faPause} className="text-lg  text-white"/>): (<FontAwesomeIcon icon={faArrowUp} className="text-lg  text-white"/>)}
+               type="submit" className="flex h-8 w-8 sm:h-10 sm:w-10 rounded-full items-center bg-blue-600  justify-center text-center hover:bg-blue-700 cursor-pointer">
+      {aiChat.isPending? (<FontAwesomeIcon icon={faPause} className="sm:text-lg text-sm text-white"/>): (<FontAwesomeIcon icon={faArrowUp} className="text-sm sm:text-lg text-white"/>)}
      </button>
        </div>
       
