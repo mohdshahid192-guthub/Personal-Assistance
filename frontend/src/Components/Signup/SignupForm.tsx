@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export default function LoginForm() {
+export default function SignupForm() {
 
   const [email, setEmail] = useState<string>("")
+  const [fullName, setFullName] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
@@ -14,6 +15,20 @@ export default function LoginForm() {
 
       <form action="" className="w-[90%] flex flex-col gap-4 items-center">
 
+ <div className="w-full flex flex-col gap-2 px-2">
+          <label htmlFor="fullName" className="font-semibold text-gray-300 pl-4">Full Name</label>
+
+          <div className="w-full h-10 relative">
+            <input type="text" value={fullName} placeholder="Enter Your Full Name"
+              onChange={(e) => setFullName(e.target.value)}
+              required className="w-full bg-white  rounded-sm h-10 text-black px-4 outline-0 invalid:border-red-500 " />
+
+            <i className={`fa-solid fa-address-card absolute text-lg right-5 top-1/2 -translate-y-1/2 cursor-pointer ${fullName ? "text-sky-600" : "text-gray-700"}`}
+             
+            ></i>
+
+          </div>
+        </div>
 
 
         <div className="w-full flex flex-col gap-2 px-2">

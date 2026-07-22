@@ -5,6 +5,7 @@ import LandingLayout from "./Layout/LandingLayout"
 import { useAppSelector } from "./Store/hooks"
 import LandingPage from "./Components/LandingPage/LandingPage"
 import LoginPage from "./Components/LoginPage/LoginPage"
+import SignupPage from "./Components/Signup/SignupPage"
 function App() {
 
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn)
@@ -16,6 +17,7 @@ function App() {
       <Route element={<LandingLayout/>}>
      <Route path="/landing" element={<LandingPage/>} />
      <Route path="/login" element={<LoginPage/>} />
+     <Route path="/signup" element={<SignupPage/>} />
      <Route path="*" element={<Navigate to="/landing" replace />} />
     </Route>
      )}

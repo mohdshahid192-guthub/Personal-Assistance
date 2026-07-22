@@ -11,7 +11,7 @@ export default function LandingPage() {
       <p className="text-gray-300 max-w-125 text-lg text-center px-2 ">An AI assistant with personalized responses, updated coding experience and track your previous error debugging with your second brain.</p>
 
       <div className="flex gap-6 ">
-        <WhiteBtn variant="onlyBorder"  size="medium" >Sign Up</WhiteBtn>
+        <WhiteBtn variant="onlyBorder"  size="medium"   onClick={() => navigate("/signup")}>Sign Up</WhiteBtn>
         <WhiteBtn variant="withBg" size="medium"
         onClick={() => navigate("/login")}
         >Sign In</WhiteBtn>
