@@ -69,7 +69,7 @@ userSchema.methods.generateRefreshToken = function(): string {
     {
       _id: this._id.toString(),
     },
-    process.env.REFRESH_TOKEN_SECRET!, 
+    process.env.REFRESH_TOKEN__SECRET!, 
     {expiresIn: (process.env.REFRESH_TOKEN_EXPIRY || "7d") as jwt.SignOptions["expiresIn"]}
   )
 }
